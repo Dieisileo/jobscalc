@@ -5,7 +5,7 @@ let data = {
   "days-per-week": 5,
   "hours-per-day": 5,
   "vacation-per-year": 4,
-  "value-hour": 75
+  "value-hour": 75,
 };
 
 module.exports = {
@@ -13,6 +13,6 @@ module.exports = {
     return data;
   },
   update(newData) {
-    data = newData
+    data = newData;
   }
 }
