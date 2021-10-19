@@ -4,21 +4,22 @@ const Profile = require('../model/Profile')
 
 module.exports = {
   create(req, res) {
-    return res.render("job")
+    return res.render('job')
   },
 
   save(req, res) {
     // req.body = { name: 'kjfksj', 'daily-hours': '3', 'total-hours': '5' }
     const jobs = Job.get()
-    const lastId = jobs[jobs.length - 1]?.id || 0;
+    const lastId = jobs[jobs.length - 1]?.id || 0
 
-    jobs.push({
+    Job.create({
       id: lastId + 1,
       name: req.body.name,
-      "daily-hours": req.body["daily-hours"],
-      "total-hours": req.body["total-hours"],
+      'daily-hours': req.body['daily-hours'],
+      'total-hours': req.body['total-hours'],
       created_at: Date.now() // atribuindo data de hoje
     })
+
     return res.redirect('/')
   },
 
@@ -34,9 +35,9 @@ module.exports = {
 
     const profile = Profile.get()
 
-    job.budget = JobUtils.calculateBudget(job, profile["value-hour"])
+    job.budget = JobUtils.calculateBudget(job, profile['value-hour'])
 
-    return res.render("job-edit", { job })
+    return res.render('job-edit', { job })
   },
 
   update(req, res) {
@@ -52,8 +53,8 @@ module.exports = {
     const updatedJob = {
       ...job,
       name: req.body.name,
-      "total-hours": req.body["total-hours"],
-      "daily-hours": req.body["daily-hours"]
+      'total-hours': req.body['total-hours'],
+      'daily-hours': req.body['daily-hours']
     }
 
     const newJobs = jobs.map(job => {
@@ -71,7 +72,7 @@ module.exports = {
 
   delete(req, res) {
     const jobId = req.params.id
-    
+
     Job.delete(jobId)
 
     return res.redirect('/')
