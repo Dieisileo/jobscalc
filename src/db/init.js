@@ -29,14 +29,16 @@ const initDb = {
   monthly_budget, 
   days_per_week, 
   hours_per_day, 
-  vacation_per_year
+  vacation_per_year,
+  value_hour
   ) VALUES (
     "Dieisileo",
     "https://github.com/dieisileo.png",
     3000,
     5,
     5,
-    4
+    4,
+    70
   );`)
 
     await db.run(`INSERT INTO jobs (
@@ -48,7 +50,7 @@ const initDb = {
   "Pizzaria Guloso",
   2,
   1,
-  1617514376018
+  1634912563222
 );`)
 
     await db.run(`INSERT INTO jobs (
@@ -60,7 +62,7 @@ const initDb = {
   "OneTwo Project",
   3,
   47,
-  1617514376018
+  1634912563222
 );`)
 
     await db.close()
